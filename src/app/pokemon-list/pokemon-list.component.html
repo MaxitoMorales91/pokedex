@@ -1,0 +1,17 @@
+<input
+  type="text"
+  [(ngModel)]="search.name"
+  name="search"  
+  class="form-list-filter m-1 text-start search-pokedex"
+  placeholder="Find a pokemón"
+/>
+<ul class="list-group" style="height: 400px; overflow-y: scroll">
+  <li
+    class="list-group-item"
+    style="cursor: pointer"
+    *ngFor="let pokemon of pokemonList | Filter : search; let i = index"
+    (click)="goToDetails(pokemon.url.split('/').slice(-2, -1)[0])"
+  >
+    {{ pokemon.name }}
+  </li>
+</ul>
